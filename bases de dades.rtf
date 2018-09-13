@@ -1,0 +1,207 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\fnil\fcharset0 Menlo-BoldItalic;}
+{\colortbl;\red255\green255\blue255;\red235\green235\blue235;\red0\green0\blue109;\red109\green109\blue109;
+\red245\green249\blue255;\red82\green0\blue2;\red15\green112\blue3;\red82\green0\blue103;\red0\green0\blue254;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c92157\c92157\c92157;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c42745\c42745\c42745;
+\csgenericrgb\c96078\c97647\c100000;\csgenericrgb\c32157\c0\c784;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c0\c0\c99608;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Creacio base de dades:\
+\
+CREATE TABLE menjar (\
+	nom char(30),\
+    tipus char(30),\
+    vots integer,\
+    punts integer,\
+    ratio integer CHECK (ratio >=0 AND ratio <=5),\
+    mapa char(300),\
+	PRIMARY KEY (nom, tipus));\
+\
+\
+SELECT nom, ratio, mapa\
+FROM menjar\
+WHERE tipus = 'pizza'\
+ORDER BY nom;\
+\
+\
+UPDATE menjar\
+SET vots=vots + 1\
+SET punts= punts + x  --sent x un valor entre 0 i 5\
+SET ratio= punts/vots\
+\
+\
+\
+\
+ 
+\f1 \cb2 <?
+\f2\b \cf3 php\
+            echo "DAVID";\
+            $dbconnection = pg_connect ("host=localhost port=5432 dbname=menjar password=iavm2umr");\
+            echo $dbconnection;\
+\
+/*\
+            if ($dbconnection )\{    //si hi ha connexio. Altrament no fer res\
+                $result = pg_query ($dbconnection,"\
+                SELECT nom, ratio, mapa\
+                    FROM menjar\
+                    WHERE tipus = '....'\
+                    ORDER BY nom;\
+                ");\
+\
+            echo pg_result_seek($result,0);\
+            $mapa = pg_result_seek($result,2);\
+            <iframe src="https://www.google.com/maps/embed?pb= $mapa       /* revisar */\
+            \}\
+\
+            pg_close($dbconnection); */\
+        
+\f1\b0 \cf0 ?>\
+
+\f0 \cb1 \
+\
+\
+\
+INSERT INTO menjar\
+VALUES ('frankfurt', 'pizza', 0,0,0,'"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11972.592248684088!2d2.1165581!3d41.3925908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sca!2ses!4v1507933777077" width="600" height="450" frameborder="0" style="border:0" allowfullscreen>');\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f3\i \cf4 <!--  <script>\
+            $(".una").on("click", function()\{\
+                
+\f2\i0\b \cf3 \cb5 <?php\
+                
+\f1\b0 \cf6 $cadena \cf0 = 
+\f2\b \cf7 " host='localhost' port='5432' dbname='postgres' user='postgres' password='iavm2umr'"
+\f1\b0 \cf0 ;\
+                \cf6 $dbconn \cf0 = 
+\f3\i pg_connect
+\f1\i0 (\cf6 $cadena\cf0 );\
+\
+                
+\f2\b \cf3 if 
+\f1\b0 \cf0 (!\cf6 $dbconn\cf0 ) \{\
+                    
+\f2\b \cf3 echo \cf7 "An error occurred.\cf3 \\n\cf7 "
+\f1\b0 \cf0 ;\
+                    
+\f2\b \cf3 exit
+\f1\b0 \cf0 ;\
+                \}\
+\
+                
+\f3\i pg_query 
+\f1\i0 (\cf6 $dbconn\cf0 , 
+\f2\b \cf7 "\
+                    UPDATE menjar\
+                    SET vots=vots + 1\
+                    SET punts= punts + 1 \
+                    SET ratio= punts/vots"
+\f1\b0 \cf0 );\
+\
+                    
+\f3\i pg_close
+\f1\i0 (\cf6 $dbconn\cf0 );\
+                
+\f4\i\b \cf8 php
+\f1\i0\b0 \cf0 >\
+\
+\
+            \});\
+\
+</
+\f4\i\b \cf8 script
+\f1\i0\b0 \cf0 > */\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \cb1 \
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\b \cf7 \cb5 <!--\
+            echo "<IFRAME SRC=\\"
+\f1\b0 \cf6 $valor\cf0 [\cf9 2\cf0 ]
+\f2\b \cf7 \\" WIDTH=\\"600\\" HEIGHT=\\"400\\" FRAMEBORDER=\\"1\\">";\
+            echo "</iframes>";\
+-->\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \cb1 \
+\
+\
+\
+BASE DE DADES:\
+\
+\
+CREATE TABLE menjar (\
+	nom char(30),\
+    tipus char(30),\
+    vots integer,\
+    punts integer,\
+    ratio integer CHECK (ratio >=0 AND ratio <=5),\
+    mapa char(300),\
+	PRIMARY KEY (nom, tipus));\
+    \
+    \
+INSERT INTO menjar\
+VALUES ('Frankfurt Pedralbes', 'entrepans', 0, 0, 0 ,'"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.398247045607!2d2.110699415206566!3d41.38715690397285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498512c0919b5%3A0xc86665f14da537fc!2sFrankfurt+Pedralbes!5e0!3m2!1sca!2ses!4v1507996416521"');\
+\
+INSERT INTO menjar\
+VALUES ('Unity', 'plats combinats', 0, 0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2909183403776!2d2.1111972152066056!3d41.38948810382827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498509f468895%3A0xf3ab8ba023c5cd56!2sFIB+-+Facultat+d&#39;Inform%C3%A0tica+de+Barcelona!5e0!3m2!1sca!2ses!4v1507996589243"');\
+\
+INSERT INTO menjar\
+VALUES ('Nostrum','plats combinats',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.397694576976!2d2.110746215206578!3d41.387168903972004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4985129fc9c51%3A0xb9ed1431143c3a7d!2sNOSTRUM+UPC!5e0!3m2!1sca!2ses!4v1507996671772"');\
+\
+INSERT INTO menjar\
+VALUES ('Nostrum','vegetarians',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.397694576976!2d2.110746215206578!3d41.387168903972004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4985129fc9c51%3A0xb9ed1431143c3a7d!2sNOSTRUM+UPC!5e0!3m2!1sca!2ses!4v1507996671772"');\
+\
+INSERT INTO menjar\
+VALUES ('Unity', 'vegetarians', 0, 0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2909183403776!2d2.1111972152066056!3d41.38948810382827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498509f468895%3A0xf3ab8ba023c5cd56!2sFIB+-+Facultat+d&#39;Inform%C3%A0tica+de+Barcelona!5e0!3m2!1sca!2ses!4v1507996589243"');\
+\
+INSERT INTO menjar\
+VALUES ('Bar de la fib', 'plats combinats',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2909183403776!2d2.1111972152066056!3d41.38948810382827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498509f468895%3A0xf3ab8ba023c5cd56!2sFIB+-+Facultat+d&#39;Inform%C3%A0tica+de+Barcelona!5e0!3m2!1sca!2ses!4v1507996589243"');\
+\
+INSERT INTO menjar\
+VALUES ('Bar de la fib', 'entrepans',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2909183403776!2d2.1111972152066056!3d41.38948810382827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498509f468895%3A0xf3ab8ba023c5cd56!2sFIB+-+Facultat+d&#39;Inform%C3%A0tica+de+Barcelona!5e0!3m2!1sca!2ses!4v1507996589243"');\
+\
+INSERT INTO menjar\
+VALUES ('Sal i pebre','plats combinats',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4242543580663!2d2.1104915152065558!3d41.38659200400768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49856d22af2b3%3A0xecdd012b2a1eeb8!2sSal+i+Pebre!5e0!3m2!1sca!2ses!4v1507996907773"');\
+\
+INSERT INTO menjar\
+VALUES ('Sal i pebre','entrepans',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4242543580663!2d2.1104915152065558!3d41.38659200400768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49856d22af2b3%3A0xecdd012b2a1eeb8!2sSal+i+Pebre!5e0!3m2!1sca!2ses!4v1507996907773"');\
+\
+INSERT INTO menjar\
+VALUES ('Al Taglio BCN', 'pizza',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.400641074853!2d2.1107940152065687!3d41.3871049039759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49850d6235305%3A0x245786f55c3b96a4!2sAl+Taglio+Bcn!5e0!3m2!1sca!2ses!4v1507997044446"');\
+\
+INSERT INTO menjar\
+VALUES ('Leo Boeck', 'entrepans',0 ,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4239228806036!2d2.110327815206562!3d41.386599204007354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49856cdf6fff1%3A0x21c19816fc7d83d0!2sCarrer+de+l&#39;Alfambra%2C+17-11%2C+08034+Barcelona!5e0!3m2!1sca!2ses!4v1507997222279"');\
+\
+INSERT INTO menjar\
+VALUES ('Dunkin Coffe', 'begudes', 0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47878.92733494551!2d2.0977031325109614!3d41.408119288817225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3a8acf8029ebba17!2sCafeter%C3%ADa+Dunkin&#39;+Coffee+Barcelona!5e0!3m2!1sca!2ses!4v1507997311795"');\
+\
+INSERT INTO menjar\
+VALUES ('Pati Blau', 'plats combinats', 0, 0, 0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.389766637589!2d2.1113808152065783!3d41.38734110396136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49850d03b825f%3A0xc918ff9b3e3f549b!2sRestaurant+Pati+Blau!5e0!3m2!1sca!2ses!4v1507997539165"');\
+\
+INSERT INTO menjar\
+VALUES ('Aris Sport Bar', 'begudes',0,0,0, '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2917.392224751197!2d-88.04949128474432!3d43.01213080166478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88050579e7872773%3A0x69cc8cb1a6448912!2sAris+Sports+Bar!5e0!3m2!1sca!2ses!4v1507997665359"');\
+\
+\
+\
+\
+}
